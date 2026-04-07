@@ -1,5 +1,7 @@
 <div align="center">
 
+![github-oss-ops Banner](https://p-mira-img-sign-sgnontt.byteintl.net/tos-mya-i-xobrcjvdq7/9f5f187cd6704093802efd3826dde399.jpeg~tplv-xobrcjvdq7-image-jpeg.jpeg)
+
 # 🚀 github-oss-ops
 
 **Your AI-Powered Open Source Growth Engine**
@@ -48,249 +50,214 @@ This skill bridges that gap. It encodes the collective wisdom from real-world op
 - **README Rewriting** — Complete README.md with badges, benchmarks, quick start, and architecture diagrams
 - **Content Operations** — Tech blogs, social media copy (Twitter/Reddit/HN), CFP proposals
 - **Community Governance** — CONTRIBUTING.md, CODE_OF_CONDUCT, Issue/PR templates, SECURITY.md
-- **Channel Strategy** — ROI-ranked promotion channels: HN, Reddit, Dev.to, Product Hunt, GitHub Trending
-- **Trap Avoidance** — 7 anti-patterns actively flagged (star-gaming, spam, paid shilling, etc.)
-- **Strategy Iteration** — PDCA loop with attribution analysis, failure modes, and channel tracking matrix
+- **Strategy Iteration** — Built-in PDCA framework for continuous improvement
 
----
-
-## How It Works
+### The 4-Step Workflow
 
 ```
-github-oss-ops/
-├── SKILL.md                        # Core instructions (207 lines)
-└── references/
-    ├── growth-playbook.md          # Full strategy library (436 lines)
-    └── templates.md                # Community governance templates (316 lines)
+┌─────────────────────────────────────────────────────────────────────────────┐
+│  DIAGNOSE  →  PLAN  →  EXECUTE  →  ITERATE                                   │
+├─────────────────────────────────────────────────────────────────────────────┤
+│  • Current metrics    • 30-day quick wins   • Write content     • Check KPIs  │
+│  • Project stage      • 90-day roadmap      • Optimize README   • Analyze    │
+│  • Key bottlenecks    • Channel strategy    • Launch campaign   • Adjust     │
+└─────────────────────────────────────────────────────────────────────────────┘
 ```
 
-The skill follows the universal `SKILL.md` format — a YAML frontmatter for triggering metadata, followed by Markdown instructions that any LLM can follow. No proprietary APIs, no vendor lock-in, no code dependencies.
+### Platform Setup
 
-When triggered, the AI reads `SKILL.md` and follows a 4-step workflow:
-1. **Diagnose** your project's current stage and bottlenecks
-2. **Plan** a structured growth strategy with specific timelines and metrics
-3. **Execute** by helping you write README, blogs, social posts, and governance docs
-4. **Iterate** with built-in checkpoints and failure-mode analysis
+#### Mira (ByteDance)
 
----
+This skill is pre-installed for Mira users. Simply invoke it with:
 
-## Platform Setup
-
-### Mira (Bytedance)
-
-**Already installed.** The skill is deployed at:
 ```
-/opt/tiger/mira_nas/plugins/prod/{your_user_id}/skills/github-oss-ops/
+/mira-user-skills:github-oss-ops My project has 50 stars, how do I grow to 500?
 ```
 
-**Trigger it** by saying things like:
-- "我的开源项目怎么涨 Stars？"
-- "帮我做个开源运营计划"
-- "帮我优化 README"
-
-Mira features: Full toolchain available — Feishu doc export, web browsing for repo analysis, web search for trend research, image generation for diagrams.
-
-### Claude Code (Anthropic)
+#### Claude Code (Anthropic)
 
 1. **Copy the skill folder** to your Claude Code custom skills directory:
    ```bash
-   # Clone or copy the skill directory
    cp -r github-oss-ops/ ~/.claude/skills/github-oss-ops/
    ```
 
-2. **Or use the `/skill` command** if your setup supports custom skill loading:
+2. **Restart Claude Code** or run `/refresh`
+
+3. **Invoke naturally** — the skill triggers on open-source related queries:
    ```
-   /skill install github-oss-ops
-   ```
-
-3. **Trigger it** naturally in conversation:
-   - "Help me grow my GitHub project's stars"
-   - "Write a README for my Go framework"
-   - "My open source project has stalled at 200 stars"
-
-Claude Code features: File system access for saving plans as .md files, bash for running analysis scripts, web search via MCP.
-
-### OpenClaw / Custom Agents
-
-1. **Copy the skill directory** into your agent's skill path:
-   ```bash
-   cp -r github-oss-ops/ /path/to/your/agent/skills/
+   > I have a Python CLI tool with 12 stars, how do I get to 100?
    ```
 
-2. **Ensure your agent supports SKILL.md loading.** The skill uses standard YAML frontmatter + Markdown body format. If your agent reads `SKILL.md` files with `name` and `description` fields in the frontmatter, it will work out of the box.
+#### OpenClaw / Any SKILL.md-Compatible Agent
 
-3. **Reference file loading**: The skill references two files in `references/`. Your agent should be able to read these when the SKILL.md instructs it to. If not, you can inline the content into SKILL.md (though it will be longer).
+1. **Clone or download** this repository
+2. **Place the folder** in your agent's skills directory
+3. **Reference the SKILL.md** path in your agent's configuration
 
-### Any Other Agent / Manual Use
+### File Structure
 
-The skill is **pure Markdown** — no API calls, no compiled code, no runtime dependencies. You can use it with any LLM by:
+```
+github-oss-ops/
+├── SKILL.md                          # Main skill file (207 lines)
+├── README.md                         # This file
+├── LICENSE                           # MIT License
+└── references/
+    ├── growth-playbook.md            # Complete 0→1000 Stars strategy (436 lines)
+    └── templates.md                  # 6 community governance templates (316 lines)
+```
 
-1. Pasting the content of `SKILL.md` into your system prompt
-2. Telling the LLM: "Follow these instructions to help me with open source project growth"
-3. Providing the reference files when deeper guidance is needed
+### Example Interactions
 
-This works with ChatGPT, Gemini, local models, or any other LLM that can follow structured instructions.
+**Early-stage growth (0-100 stars):**
+```
+User: I just released a Python CLI tool. It solves [X problem] but only has 3 stars.
 
----
+Skill: [Diagnoses as early stage] → [Generates 30-day quick wins] → [Optimizes README]
+→ "Your README spends 70% on API docs but 0% on 'why this exists'. Here's a rewrite..."
+```
 
-## Example Interactions
+**Growth plateau (100-500 stars):**
+```
+User: My project grew to 150 stars in month 1 but now it's stuck.
 
-**Early-stage project:**
-> "I just published a Python CLI tool on GitHub, only 12 stars. How do I get to 100?"
+Skill: [Identifies contributor funnel blockage] → [Suggests good-first-issues]
+→ "You have users but no contributors. Create these 3 issues labeled 'good first issue'..."
+```
 
-→ Returns: Diagnosis (early stage), 4 quick-win actions with day-by-day timelines, 90-day roadmap, metrics tracking table, and "start today" priorities.
+**Mature project optimization (1000+ stars):**
+```
+User: We have 2K stars but only 5 contributors. How do we build a maintainer community?
 
-**README optimization:**
-> "Optimize the README for my Go microservice framework — high performance, low memory"
-
-→ Returns: Complete README.md with centered header, 6 badges, "Why this?" comparison table, feature list, Quick Start code, benchmarks, architecture diagram, and contributing guide.
-
-**Growth plateau:**
-> "My project has 500 stars but growth stalled. Only +10/month for the last 3 months."
-
-→ Returns: Plateau diagnosis with 3 root causes, content sprint plan (4 articles in 2 weeks), contributor activation strategy, HN re-launch playbook, and 90-day roadmap to 1,000.
-
----
-
-## License
-
-MIT — use it, fork it, share it. If this skill helps your project grow, a star on the repo would be appreciated. 🙂
-
----
+Skill: [Analyzes governance gaps] → [Proposes contribution tiers]
+→ "Add a CONTRIBUTING.md with clear triage process and CODE_OF_CONDUCT..."
+```
 
 ---
 
 <a id="中文"></a>
 
-## 为什么做这个 Skill
+## 为什么创建这个技能
 
-每天都有成千上万的开源项目在 GitHub 上诞生，但大多数都默默无闻地消亡了——不是因为代码不好，而是因为**根本没人发现它们**。
+每天都有数千个开源项目在 GitHub 上诞生。大多数在默默无闻中消亡——不是因为代码质量差，而是因为**根本没人知道它们的存在**。
 
-"好项目"和"火项目"之间的差距不是代码质量，而是**运营**：你如何定位、推广、培育你的项目，使它成为一个自循环的社区。
+"好项目"和"受欢迎的项目"之间的差距不在于代码，而在于**运营**：如何定位、推广和培育你的项目，让它成为一个自我维持的社区。
 
-这个 Skill 就是来填补这个差距的。它将真实的开源增长实战经验浓缩为一个 AI 技能，嵌入到你的日常工作流中——诊断项目阶段、生成定制化增长计划、帮你写 README、起草 Hacker News 发布文案、并随着指标变化与你一起迭代。
+这个技能弥合了这种差距。它将真实世界的开源增长方法论编码进 AI 助手，融入你的日常工作流——诊断项目阶段、生成定制化增长计划、撰写 README、起草 Hacker News 发布文案，并随着指标变化与你一起迭代。
 
-### 核心差异
+### 与众不同之处
 
 | 特性 | 通用 AI 建议 | **github-oss-ops** |
-|------|-------------|---------------------|
-| 阶段感知 | 千篇一律的建议 | 自动诊断项目阶段（0→100 / 100→1K / 1K+），匹配对应策略 |
-| 可执行性 | "写好文档" | "用 asciinema 录终端 GIF 加到 README，周二早 8 点发 r/Python，预计 +30 stars" |
-| 反模式防护 | 可能建议刷 star | 7 条内置护栏（禁止刷 star、垃圾推广、付费买量等） |
-| 迭代机制 | 一次性建议 | 内置 PDCA 循环 + 检查点 + 失败归因 + Plan B |
-| 模板库 | "你应该有个 CONTRIBUTING.md" | 附带 6 个可直接使用的标准模板 |
+|------|-------------|-------------------|
+| 阶段感知 | 千篇一律的建议 | 诊断项目阶段（0→100 / 100→1K / 1K+）并自适应策略 |
+| 可执行输出 | "写更好的文档" | "在 README 添加 asciinema GIF，周二早 8 点发布到 r/Python，预期 +30 stars" |
+| 反模式防护 | 可能建议刷星 | 内置 7 条常见陷阱防护（刷星、垃圾推广等） |
+| 迭代闭环 | 一次性建议 | 内置 PDCA 循环，含检查点、失败诊断和 Plan B |
+| 模板库 | "你应该有 CONTRIBUTING.md" | 提供 6 个生产级模板（贡献指南、行为准则、Issue/PR 模板、安全策略） |
 | 跨平台 | 平台锁定 | 支持 Mira、Claude Code、OpenClaw 及任何兼容 SKILL.md 的 Agent |
 
 ### 核心能力
 
-- **项目诊断**——自动识别增长阶段和瓶颈
-- **增长计划生成**——30 天速赢 + 90 天路线图 + 指标追踪表
-- **README 重写**——完整的 README.md，含 Badge、Benchmark、Quick Start、架构图
-- **内容运营**——技术博客、社交媒体文案（Twitter/Reddit/HN）、CFP 提案
-- **社区治理**——CONTRIBUTING.md、CODE_OF_CONDUCT、Issue/PR 模板、SECURITY.md
-- **渠道策略**——按 ROI 分层的推广渠道：HN、Reddit、Dev.to、Product Hunt、GitHub Trending
-- **陷阱规避**——7 大反模式主动拦截
-- **策略迭代**——PDCA 循环 + 归因分析 + 失败模式应对 + 渠道效果追踪
+- **项目诊断** — 自动识别增长阶段和瓶颈
+- **增长计划生成** — 30 天速赢 + 90 天路线图 + 指标追踪表
+- **README 重写** — 完整的 README.md，含 Badge、性能数据、快速开始、架构图
+- **内容运营** — 技术博客、社交媒体文案（Twitter/Reddit/HN）、CFP 提案
+- **社区治理** — CONTRIBUTING.md、CODE_OF_CONDUCT、Issue/PR 模板、SECURITY.md
+- **策略迭代** — 内置 PDCA 框架持续优化
 
----
-
-## 工作原理
+### 四步工作流
 
 ```
-github-oss-ops/
-├── SKILL.md                        # 核心指令文件（207 行）
-└── references/
-    ├── growth-playbook.md          # 完整策略库（436 行）
-    └── templates.md                # 社区治理模板库（316 行）
+┌─────────────────────────────────────────────────────────────────────────────┐
+│  诊断  →  规划  →  执行  →  迭代                                               │
+├─────────────────────────────────────────────────────────────────────────────┤
+│  • 当前指标      • 30 天速赢     • 撰写内容      • 检查 KPI                    │
+│  • 项目阶段      • 90 天路线图   • 优化 README   • 归因分析                    │
+│  • 核心瓶颈      • 渠道策略      • 启动推广      • 策略调整                    │
+└─────────────────────────────────────────────────────────────────────────────┘
 ```
 
-采用通用 `SKILL.md` 格式——YAML 前置元数据 + Markdown 指令正文。无私有 API 依赖，无厂商锁定，无代码依赖。
+### 平台配置指南
 
-触发后，AI 按 4 步工作流执行：
-1. **诊断**项目当前阶段和瓶颈
-2. **规划**结构化增长策略，含具体时间线和量化指标
-3. **执行**帮你写 README、博客、社交文案和治理文档
-4. **迭代**通过内置检查点和失败模式分析持续优化
+#### Mira（字节跳动）
 
----
+Mira 用户已预装此技能。直接调用：
 
-## 各平台配置指南
-
-### Mira（字节跳动）
-
-**已自动安装**，部署路径：
 ```
-/opt/tiger/mira_nas/plugins/prod/{你的用户ID}/skills/github-oss-ops/
+/mira-user-skills:github-oss-ops 我的项目有 50 个 star，怎么增长到 500？
 ```
 
-**触发方式**——直接对话：
-- "我的开源项目怎么涨 Stars？"
-- "帮我做个开源运营计划"
-- "帮我优化 README"
+#### Claude Code（Anthropic）
 
-Mira 特有能力：飞书文档导出、浏览器访问 GitHub 分析仓库、搜索引擎查趋势、图片生成。
-
-### Claude Code（Anthropic）
-
-1. **复制 Skill 文件夹**到 Claude Code 的自定义技能目录：
+1. **复制技能文件夹**到 Claude Code 自定义技能目录：
    ```bash
    cp -r github-oss-ops/ ~/.claude/skills/github-oss-ops/
    ```
 
-2. **或使用 `/skill` 命令**（如果你的环境支持）：
+2. **重启 Claude Code** 或运行 `/refresh`
+
+3. **自然调用** — 技能会在开源相关查询时自动触发：
    ```
-   /skill install github-oss-ops
-   ```
-
-3. **触发方式**——自然对话：
-   - "Help me grow my GitHub project's stars"
-   - "Write a README for my Go framework"
-   - "My project stalled at 200 stars"
-
-Claude Code 特有能力：文件系统保存 .md 文件、Bash 脚本执行、MCP Web 搜索。
-
-### OpenClaw / 自定义 Agent
-
-1. **复制 Skill 目录**到你的 Agent 技能路径：
-   ```bash
-   cp -r github-oss-ops/ /path/to/your/agent/skills/
+   > 我有一个 Python CLI 工具，只有 12 个 star，怎么涨到 100？
    ```
 
-2. **确保 Agent 支持 SKILL.md 加载**。标准格式：YAML frontmatter + Markdown body，有 `name` 和 `description` 字段即可。
+#### OpenClaw / 任何兼容 SKILL.md 的 Agent
 
-3. **参考文件加载**：Skill 引用了 `references/` 下的两个文件，Agent 需要能在指令引导下读取它们。如果不支持，可以将内容内联到 SKILL.md 中。
+1. **克隆或下载**此仓库
+2. **放置文件夹**到你的 Agent 技能目录
+3. **引用 SKILL.md** 路径到你的 Agent 配置
 
-### 其他 Agent / 手动使用
+### 文件结构
 
-本 Skill 是**纯 Markdown**——无 API 调用、无编译代码、无运行时依赖。任何 LLM 都能用：
+```
+github-oss-ops/
+├── SKILL.md                          # 主技能文件（207 行）
+├── README.md                         # 本文件
+├── LICENSE                           # MIT 许可证
+└── references/
+    ├── growth-playbook.md            # 完整的 0→1000 Stars 策略（436 行）
+    └── templates.md                  # 6 个社区治理模板（316 行）
+```
 
-1. 将 `SKILL.md` 内容粘贴到 System Prompt
-2. 告诉 LLM："按照这些指令帮我做开源项目运营"
-3. 需要深入指导时提供 references 文件内容
+### 示例交互
 
-适用于 ChatGPT、Gemini、本地模型，或任何能遵循结构化指令的 LLM。
+**早期增长（0-100 stars）：**
+```
+用户：我刚发布了一个 Python CLI 工具，解决 [X 问题]，但只有 3 个 star。
 
----
+技能：[诊断为早期阶段] → [生成 30 天速赢方案] → [优化 README]
+→ "你的 README 花了 70% 篇幅讲 API 文档，0% 讲'为什么存在'。这是重写版本..."
+```
 
-## 使用示例
+**增长瓶颈（100-500 stars）：**
+```
+用户：我的项目第一个月涨到 150 stars，现在卡住了。
 
-**早期项目：**
-> "我刚在 GitHub 上发布了一个 Python CLI 工具，目前只有 12 个 stars，怎么才能快速涨到 100？"
+技能：[识别贡献者漏斗阻塞] → [建议 good-first-issues]
+→ "你有用户但没有贡献者。创建这 3 个标有 'good first issue' 的 Issue..."
+```
 
-→ 输出：诊断（早期阶段）、4 条速赢行动含逐日时间线、90 天路线图、指标追踪表、"今天就开始"优先级。
+**成熟项目优化（1000+ stars）：**
+```
+用户：我们有 2K stars，但只有 5 个贡献者。怎么建立维护者社区？
 
-**README 优化：**
-> "帮我优化这个 Go 微服务框架的 README，主要特性是高性能和低内存占用"
-
-→ 输出：完整 README.md，含居中标题、6 个 Badge、竞品对比表格、特性列表、Quick Start 代码、性能基准、架构图、贡献指南。
-
-**增长停滞：**
-> "我的项目有 500 stars 但增长停滞了，最近三个月每月只涨 10 个"
-
-→ 输出：停滞诊断含 3 个根因分析、内容冲刺计划（2 周 4 篇文章）、贡献者激活策略、HN 重新发布 playbook、通往 1000 的 90 天路线图。
+技能：[分析治理缺口] → [提出贡献层级]
+→ "添加带清晰分流流程的 CONTRIBUTING.md 和 CODE_OF_CONDUCT..."
+```
 
 ---
 
 ## License
 
-MIT — 自由使用、Fork、分享。如果这个 Skill 帮到了你的项目，欢迎给个 Star 🙂
+MIT License — see [LICENSE](LICENSE) file for details.
+
+---
+
+<div align="center">
+
+**Built with ❤️ for the open source community**
+
+If this skill helps your project grow, consider giving it a ⭐ and sharing your story!
+
+如果这个技能帮助你的项目成长，欢迎点个 ⭐ 并分享你的故事！
+
+</div>
