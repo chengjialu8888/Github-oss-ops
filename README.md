@@ -1,6 +1,6 @@
 <div align="center">
 
-![github-oss-ops Banner](https://p-mira-img-sign-sgnontt.byteintl.net/tos-mya-i-xobrcjvdq7/9f5f187cd6704093802efd3826dde399.jpeg~tplv-xobrcjvdq7-image-jpeg.jpeg)
+![github-oss-ops Banner](assets/banner.jpg)
 
 # 🚀 github-oss-ops
 
